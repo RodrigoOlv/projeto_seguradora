@@ -66,10 +66,26 @@ $veiculos = $veiDAO->buscarVeiculo();
                     <a class="dropdown-item nav-link" href="consulta-acidente.php">Acidentes</a>
                   </div>
                 </li>
+                <li>
+                  <div class="d-flex flex-row">
+                    <form name="sair" method="post" action="">
+                      <button class="btn btn-light nav-item p-2" type="submit" name="sair">
+                        Sair
+                      </button>
+                    </form>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
         </nav>
+
+        <?php
+          if(isset($_POST['sair'])){
+            unset($_SESSION['login']);
+            header("location:login.php");
+          }
+         ?>
 
         <div class="container-fluid">
           <h2 class="text-light mt-5 mb-5">Cadastro e Controle de Apólices de Seguros Veiculares</h2>
@@ -82,8 +98,7 @@ $veiculos = $veiDAO->buscarVeiculo();
 
             <div class="row">
               <div class="form-group col-md-6">
-                <!-- <input type="text" name="txtregistroveiculo" placeholder="Registro do Veículo" class="form-control"> -->
-                <select class="form-control" name="selregistroveiculo">
+                  <select class="form-control" name="selregistroveiculo">
                   <option value="registroveiculo">Registro do Veículo</option>
                   <?php
                   foreach ($veiculos as $v) {
@@ -93,7 +108,6 @@ $veiculos = $veiDAO->buscarVeiculo();
                 </select>
               </div>
               <div class="form-group col-md-6">
-                <!-- <input type="txt" name="txtidcliente" placeholder="ID do Cliente" class="form-control"> -->
                 <select class="form-control" name="selidcliente">
                   <option value="codigocliente">Código do Cliente</option>
                   <?php

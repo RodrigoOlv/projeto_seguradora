@@ -64,12 +64,30 @@
                   <div class="dropdown-menu">
                     <a class="dropdown-item nav-link" href="consulta-cliente.php">Clientes</a>
                     <a class="dropdown-item nav-link" href="consulta-veiculo.php">Veiculos</a>
+                    <a class="dropdown-item nav-link" href="consulta-apolice.php">Apólices</a>
+                    <a class="dropdown-item nav-link" href="consulta-acidente.php">Acidentes</a>
+                  </div>
+                </li>
+                <li>
+                  <div class="d-flex flex-row">
+                    <form name="sair" method="post" action="">
+                      <button class="btn btn-light nav-item p-2" type="submit" name="sair">
+                        Sair
+                      </button>
+                    </form>
                   </div>
                 </li>
               </ul>
             </div>
           </div>
         </nav>
+
+        <?php
+          if(isset($_POST['sair'])){
+            unset($_SESSION['login']);
+            header("location:login.php");
+          }
+         ?>
 
         <div class="container-fluid">
           <h2 class="text-light mt-5 mb-5">Cadastro e Controle de Apólices de Seguros Veiculares</h2>

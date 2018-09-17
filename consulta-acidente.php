@@ -20,8 +20,6 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
   <link href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"> -->
   <script src="vendor/components/jquery/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.3/js/tether.min.js"></script>
   <script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -65,10 +63,26 @@
                     <a class="dropdown-item nav-link" href="consulta-acidente.php">Acidentes</a>
                   </div>
                 </li>
+                <li>
+                  <div class="d-flex flex-row">
+                    <form name="sair" method="post" action="">
+                      <button class="btn btn-light nav-item p-2" type="submit" name="sair">
+                        Sair
+                      </button>
+                    </form>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
         </nav>
+
+        <?php
+          if(isset($_POST['sair'])){
+            unset($_SESSION['login']);
+            header("location:login.php");
+          }
+         ?>
 
         <div class="container-fluid">
           <h2 class="text-light mt-5 mb-5">Acidentes</h2>
@@ -123,13 +137,10 @@
                 elseif($filtro == 'horariosinistro') $query = "where horario = '".$pesquisa."'";
                 elseif($filtro == 'registroveiculo') $query = "where registro_veiculo ".$pesquisa;
 
-                // var_dump($query);
                 $acidentes = $aciDAO->filtrarAcidente($query);
-                // var_dump($acidentes);
               }//if qtderros é 0
             }//if isset session msg
 
-            // var_dump($clientes);
             if(count($acidentes) == 0){
               Helper::alert("Não há dados no banco!");
               echo "<h2 class='text-light mt-5'>Nenhum acidente cadastrada</h2>";

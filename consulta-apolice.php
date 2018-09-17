@@ -62,10 +62,26 @@
                     <a class="dropdown-item nav-link" href="consulta-acidente.php">Acidentes</a>
                   </div>
                 </li>
+                <li>
+                  <div class="d-flex flex-row">
+                    <form name="sair" method="post" action="">
+                      <button class="btn btn-light nav-item p-2" type="submit" name="sair">
+                        Sair
+                      </button>
+                    </form>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
         </nav>
+
+        <?php
+          if(isset($_POST['sair'])){
+            unset($_SESSION['login']);
+            header("location:login.php");
+          }
+         ?>
 
         <div class="container-fluid">
           <h2 class="text-light mt-5 mb-5">Apólices</h2>
@@ -123,7 +139,6 @@
               }//if qtderros é 0
             }//if isset session msg
 
-            // var_dump($clientes);
             if(count($apolices) == 0){
               Helper::alert("Não há dados no banco!");
               echo "<h2 class='text-light mt-5'>Nenhuma apólice cadastrada</h2>";
@@ -176,13 +191,13 @@
         <!-- PHP -->
         <?php
           if(isset($_GET['numero'])){
-            // var_dump($_GET['id']);
+
             $apoDAO->deletarApolice($_GET['numero']);
-            //
+
             $_SESSION['msg']="Apólice excluída com sucesso!";
-            // Helper::alert($_SESSION['msg']);
+
             header("location:consulta-apolice.php");
-            //
+            
             unset($_GET['numero']);
           }
          ?>

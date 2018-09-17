@@ -3,8 +3,6 @@
   ob_start();
 
   if(!isset($_SESSION['login'])) header("location:login.php");
-
-  // unset($_SESSION['login']);
  ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -57,10 +55,26 @@
                 <a class="dropdown-item nav-link" href="consulta-acidente.php">Acidentes</a>
               </div>
             </li>
+            <li>
+              <div class="d-flex flex-row">
+                <form name="sair" method="post" action="">
+                  <button class="btn btn-light nav-item p-2" type="submit" name="sair">
+                    Sair
+                  </button>
+                </form>
+              </div>
+            </li>
           </ul>
         </div>
       </div>
     </nav>
+
+    <?php
+      if(isset($_POST['sair'])){
+        unset($_SESSION['login']);
+        header("location:login.php");
+      }
+     ?>
 
     <div class="container-fluid">
       <h2 class="text-light mt-5">Cadastro e Controle de Apólices de Seguros Veiculares</h2>

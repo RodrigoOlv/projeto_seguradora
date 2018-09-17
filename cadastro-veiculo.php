@@ -1,4 +1,4 @@
-<?php 
+<?php
   session_start();
   ob_start();
 
@@ -54,10 +54,26 @@
                     <a class="dropdown-item nav-link" href="consulta-acidente.php">Acidentes</a>
                   </div>
                 </li>
+                <li>
+                  <div class="d-flex flex-row">
+                    <form name="sair" method="post" action="">
+                      <button class="btn btn-light nav-item p-2" type="submit" name="sair">
+                        Sair
+                      </button>
+                    </form>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
         </nav>
+
+        <?php
+          if(isset($_POST['sair'])){
+            unset($_SESSION['login']);
+            header("location:login.php");
+          }
+         ?>
 
         <div class="container-fluid">
           <h2 class="text-light mt-5 mb-5">Cadastro e Controle de Apólices de Seguros Veiculares</h2>
@@ -114,8 +130,6 @@
               $vei->marca = Padronizacao::padronizarMaiMin($_POST['txtmarca']);
               $vei->modelo = Padronizacao::padronizarMaiMin($_POST['txtmodelo']);
               $vei->placa = $_POST['txtplaca'];
-
-              // echo $vei;
 
               $veiDAO = new VeiculoDAO();
 
