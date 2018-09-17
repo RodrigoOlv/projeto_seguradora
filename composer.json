@@ -7,7 +7,6 @@
     "require": {
         "twbs/bootstrap": "4.1.3",
         "components/jquery": "dev-master",
-        "fortawesome/font-awesome": "^4.7",
         "twbs/bootstrap-glyphicons": "dev-gh-pages"
     }
 }
