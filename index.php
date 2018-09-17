@@ -1,3 +1,11 @@
+<?php
+  session_start();
+  ob_start();
+
+  if(!isset($_SESSION['login'])) header("location:login.php");
+
+  // unset($_SESSION['login']);
+ ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

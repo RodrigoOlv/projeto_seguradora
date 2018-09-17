@@ -1,4 +1,9 @@
 <?php
+session_start();
+ob_start();
+
+if(!isset($_SESSION['login'])) header("location:login.php");
+
 // Instanciar cliente e veiculo para fazer o select da FK
 require_once 'dao/clientedao.class.php';
 require_once 'dao/veiculodao.class.php';

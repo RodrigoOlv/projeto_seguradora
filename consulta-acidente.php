@@ -1,16 +1,17 @@
 <?php
-session_start();
-ob_start();
+  session_start();
+  ob_start();
 
-require_once 'dao/acidentedao.class.php';
-require_once 'modelo/acidente.class.php';
-require_once 'util/helper.class.php';
-require_once 'util/padronizacao.class.php';
+  if(!isset($_SESSION['login'])) header("location:login.php");
 
-$aciDAO = new AcidenteDAO();
+  require_once 'dao/acidentedao.class.php';
+  require_once 'modelo/acidente.class.php';
+  require_once 'util/helper.class.php';
+  require_once 'util/padronizacao.class.php';
 
-$acidentes = $aciDAO->buscarAcidente();
-// var_dump($apolices);
+  $aciDAO = new AcidenteDAO();
+
+  $acidentes = $aciDAO->buscarAcidente();
  ?>
 <!DOCTYPE html>
 <html lang="pt-br">

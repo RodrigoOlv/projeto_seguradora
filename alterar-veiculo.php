@@ -2,6 +2,8 @@
   session_start();
   ob_start();
 
+  if(!isset($_SESSION['login'])) header("location:login.php");
+
   if(isset($_GET['registro'])){
 
     include_once 'modelo/veiculo.class.php';
@@ -12,9 +14,8 @@
     $query = "where registro = ".$_GET['registro'];
 
     $veiculos = $veiDAO->filtrarVeiculo($query);
-    // var_dump($veiculos);
+
     $veiculo = $veiculos[0];
-    // echo $veiculo;
   }
  ?>
 <!DOCTYPE html>

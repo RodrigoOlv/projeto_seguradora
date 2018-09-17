@@ -1,15 +1,16 @@
 <?php
-session_start();
-ob_start();
+  session_start();
+  ob_start();
 
-require_once 'dao/veiculodao.class.php';
-require_once 'modelo/veiculo.class.php';
-require_once 'util/helper.class.php';
+  if(!isset($_SESSION['login'])) header("location:login.php");
 
-$veiDAO = new VeiculoDAO();
+  require_once 'dao/veiculodao.class.php';
+  require_once 'modelo/veiculo.class.php';
+  require_once 'util/helper.class.php';
 
-$veiculos = $veiDAO->buscarVeiculo();
-// var_dump($veiculos);
+  $veiDAO = new VeiculoDAO();
+
+  $veiculos = $veiDAO->buscarVeiculo();
  ?>
 <!DOCTYPE html>
 <html lang="pt-br">

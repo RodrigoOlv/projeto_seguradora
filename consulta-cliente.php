@@ -2,6 +2,8 @@
 session_start();
 ob_start();
 
+if(!isset($_SESSION['login'])) header("location:login.php");
+
 require_once 'dao/clientedao.class.php';
 require_once 'modelo/cliente.class.php';
 require_once 'util/helper.class.php';

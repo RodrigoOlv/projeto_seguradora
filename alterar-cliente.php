@@ -2,6 +2,8 @@
   session_start();
   ob_start();
 
+  if(!isset($_SESSION['login'])) header("location:login.php");
+
   if(isset($_GET['id'])){
 
     include_once 'modelo/cliente.class.php';
@@ -12,9 +14,8 @@
     $query = "where id = ".$_GET['id'];
 
     $clientes = $cliDAO->filtrarCliente($query);
-    // var_dump($clientes);
+
     $cliente = $clientes[0];
-    // echo $cliente;
   }
  ?>
 <!DOCTYPE html>

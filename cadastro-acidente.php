@@ -1,5 +1,10 @@
 <?php
-// Para usar a FK
+  session_start();
+  ob_start();
+
+  if(!isset($_SESSION['login'])) header("location:login.php");
+
+  // Para usar a FK
   require_once 'modelo/veiculo.class.php';
   require_once 'dao/veiculodao.class.php';
   $veiDAO = new VeiculoDAO();

@@ -2,6 +2,8 @@
   session_start();
   ob_start();
 
+  if(!isset($_SESSION['login'])) header("location:login.php");
+
   include_once 'util/padronizacao.class.php';
 
   if(isset($_GET['codigo'])){
@@ -15,8 +17,6 @@
 
     $acidentes = $aciDAO->filtrarAcidente($query);
     $acidente = $acidentes[0];
-
-    // var_dump($acidentes);
 
     $listaAcidentes = $aciDAO->buscarAcidente();
   }

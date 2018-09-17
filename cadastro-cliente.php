@@ -1,3 +1,11 @@
+<?php
+  session_start();
+  ob_start();
+
+  if(!isset($_SESSION['login'])) header("location:login.php");
+
+  // unset($_SESSION['login']);
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -42,8 +50,10 @@
                     Consulta
                   </button>
                   <div class="dropdown-menu">
-                    <a class="dropdown-item nav-link" href="consulta-cliente.php">Cliente</a>
-                    <a class="dropdown-item nav-link" href="consulta-veiculo.php">Veiculo</a>
+                    <a class="dropdown-item nav-link" href="consulta-cliente.php">Clientes</a>
+                    <a class="dropdown-item nav-link" href="consulta-veiculo.php">Veiculos</a>
+                    <a class="dropdown-item nav-link" href="consulta-apolice.php">Apólices</a>
+                    <a class="dropdown-item nav-link" href="consulta-acidente.php">Acidentes</a>
                   </div>
                 </li>
               </ul>

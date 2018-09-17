@@ -1,15 +1,16 @@
 <?php
-session_start();
-ob_start();
+  session_start();
+  ob_start();
 
-require_once 'dao/apolicedao.class.php';
-require_once 'modelo/apolice.class.php';
-require_once 'util/helper.class.php';
+  if(!isset($_SESSION['login'])) header("location:login.php");
 
-$apoDAO = new ApoliceDAO();
+  require_once 'dao/apolicedao.class.php';
+  require_once 'modelo/apolice.class.php';
+  require_once 'util/helper.class.php';
 
-$apolices = $apoDAO->buscarApolice();
-// var_dump($apolices);
+  $apoDAO = new ApoliceDAO();
+
+  $apolices = $apoDAO->buscarApolice();
  ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -18,8 +19,6 @@ $apolices = $apoDAO->buscarApolice();
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
   <link href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"> -->
   <script src="vendor/components/jquery/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.3/js/tether.min.js"></script>
   <script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
