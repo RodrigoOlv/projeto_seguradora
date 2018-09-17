@@ -40,5 +40,10 @@ CREATE TABLE acidente(
     FOREIGN KEY (registro_veiculo) REFERENCES veiculo (registro)
 );
 
-SELECT * FROM apolice;
-ALTER TABLE acidente CHANGE local local_sinistro VARCHAR(100) NOT NULL;
+CREATE TABLE usuario(
+	id_usuario BIGINT PRIMARY KEY AUTO_INCREMENT,
+    login_usuario VARCHAR(50) NOT NULL,
+    senha_usuario VARCHAR(50) NOT NULL
+);
+
+INSERT INTO usuario (id_usuario, login_usuario, senha_usuario) VALUE (null, "admin", "access");
