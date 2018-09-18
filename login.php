@@ -5,6 +5,7 @@ ob_start();
 include_once 'modelo/usuario.class.php';
 include_once 'dao/usuariodao.class.php';
 require_once 'util/helper.class.php';
+require_once 'util/validacao.class.php';
 
 $user = new Usuario();
 $userDAO = new UsuarioDAO();
@@ -51,8 +52,8 @@ $userDAO = new UsuarioDAO();
     <?php
       if(isset($_POST['entrar'])){
 
-        $user->login = $_POST['txtlogin'];
-        $user->senha = $_POST['passenha'];
+        $user->login = Validacao::antiXSS($_POST['txtlogin']);
+        $user->senha = Validacao::antiXSS($_POST['passenha']);
 
         $qtdErros = 0;
 

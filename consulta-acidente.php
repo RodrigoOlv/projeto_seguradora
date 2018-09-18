@@ -178,8 +178,8 @@
                      echo "<tr>";
                       echo "<td>$ac->codigo_sinistro</td>";
                       echo "<td>$ac->local_sinistro</td>";
-                      echo "<td>$ac->data_sinistro</td>";
-                      echo "<td>$ac->horario</td>";
+                      echo "<td>".Padronizacao::padronizarDataBR($ac->data_sinistro)."</td>";
+                      echo "<td>".Padronizacao::padronizarHorario($ac->horario)."</td>";
                       echo "<td>$ac->registro_veiculo</td>";
                       echo "<td><a href='alterar-acidente.php?codigo=$ac->codigo_sinistro'><button type='button' class='btn btn-info'><span class='glyphicon glyphicon-edit'></span> Alterar</button></a></td>";
                       echo "<td><a href='consulta-acidente.php?codigo=$ac->codigo_sinistro'><button type='button' class='btn btn-danger'><span class='glyphicon glyphicon-remove'></span>Excluir</button></a></td>";

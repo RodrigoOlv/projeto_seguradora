@@ -7,7 +7,7 @@
   require_once 'dao/apolicedao.class.php';
   require_once 'modelo/apolice.class.php';
   require_once 'util/helper.class.php';
-
+  
   $apoDAO = new ApoliceDAO();
 
   $apolices = $apoDAO->buscarApolice();
@@ -197,7 +197,7 @@
             $_SESSION['msg']="Apólice excluída com sucesso!";
 
             header("location:consulta-apolice.php");
-            
+
             unset($_GET['numero']);
           }
          ?>

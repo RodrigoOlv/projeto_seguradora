@@ -22,7 +22,7 @@ class Padronizacao {
   }
 
   public static function padronizarDataBR($v){
-    return date ('d-m-Y', strtotime($v));
+    return date('d-m-Y', strtotime($v));
   }
 
   public static function padronizarHorario($v){
